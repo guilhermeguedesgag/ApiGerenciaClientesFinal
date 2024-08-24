@@ -15,7 +15,7 @@ import java.util.UUID;
 @Entity
 @Getter
 @ToString
-@AllArgsConstructor
+
 public class Clientes {
 
         @Id
@@ -26,9 +26,13 @@ public class Clientes {
         private String estado;
 
 
+    public Clientes() {
+    }
+
 
     // Construtor completo
-    public Clientes(String nome, String representante, String estado) {
+    public Clientes(UUID id, String nome, String representante, String estado) {
+        this.id = id;
         this.nome = nome;
         this.representante = representante;
         this.estado = estado;
