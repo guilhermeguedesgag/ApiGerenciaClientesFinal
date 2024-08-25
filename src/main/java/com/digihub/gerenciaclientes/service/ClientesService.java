@@ -1,11 +1,14 @@
 package com.digihub.gerenciaclientes.service;
 
 import com.digihub.gerenciaclientes.entity.Clientes;
+import com.digihub.gerenciaclientes.exceptions.NotFoundException;
 import com.digihub.gerenciaclientes.repository.ClientesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 
@@ -36,6 +39,23 @@ public class ClientesService {
 
             clientesRepository.deleteById(id);
         }
+    
+        
+     @ExceptionHandler   
+    //metodo para atualizar clientes
+    public Clientes atualizarCliente(UUID id, Clientes clienteAtualizado) {
+        // Lógica para encontrar o cliente pelo ID e atualizar suas informações
+        Optional<Clientes> optionalCliente = clientesRepository.findById(id);
+        if (optionalCliente.isPresent()) {
+            Clientes clienteExistente = optionalCliente.get();
+            clienteExistente.setNome(clienteAtualizado.getNome());
+            clienteExistente.setRepresentante(clienteAtualizado.getRepresentante());
+            clienteExistente.setEstado(clienteAtualizado.getEstado());
+            return clientesRepository.save(clienteExistente); // Salva as atualizações
+        } else {
+            throw new NotFoundException("Cliente não encontrado com o ID: " + id);
+        }
+    }
 
 
 

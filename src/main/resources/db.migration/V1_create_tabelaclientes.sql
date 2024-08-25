@@ -1,7 +1,0 @@
---CREATE TABLE clientes (
---    uuid UUID NOT NULL,
---    name VARCHAR(100) NOT NULL,
---    representante VARCHAR(100) NOT NULL,
---    estado VARCHAR(100) NOT NULL,
---    CONSTRAINT customers_pkey PRIMARY KEY (uuid)
---);

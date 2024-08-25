@@ -31,8 +31,8 @@ public class Clientes {
 
 
     // Construtor completo
-    public Clientes(String nome, String representante, String estado) {
-//        this.id = id;
+    public Clientes(UUID id,String nome, String representante, String estado) {
+        this.id = id;
         this.nome = nome;
         this.representante = representante;
         this.estado = estado;
