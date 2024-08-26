@@ -16,8 +16,17 @@ Lembrando, de sempre inserir a porta, username e password no 'application.proper
 | GET /clientes/nome                     | Retorna detalhes de um cliente específico pelo Nome          | ?nome=
 | GET /clientes/representante            | Retorna detalhes de um cliente específico pelo Representante | ?representante=
 | GET /clientes/estado                   | Retorna detalhes de um cliente específico pelo Estado        | ?estado=
-| POST /clientes                         | Cria um novo cliente                                         |
+| POST /clientes                         | Cria um novo cliente                                         | 
 | PUT /clientes/{id}                     | Atualiza um cliente existente pelo UUID                      |
 | DELETE /clientes/{id}                  | Exclui um cliente pelo UUID                                  |
 
+### Estrutura para realizar inserção no Banco de Dados(POST):
 
+### Exemplo de Estrutura de Requisição
+
+```json
+{
+    "nome": "insira aqui o nome",
+    "representante": "insira aqui o representante",
+    "estado": "insira aqui o estado"
+}
