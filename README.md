@@ -10,12 +10,14 @@ Lembrando, de sempre inserir a porta, username e password no 'application.proper
 
 
 
- Comandos a serem executados no Postman | Função                                              |
-:---------------------------------------|-----------------------------------------------------|
-| GET /clientes                          | Lista todos os clientes                             |
-| GET /clientes/{id}                     | Retorna detalhes de um cliente específico pelo UUID |
-| POST /clientes                          | Cria um novo cliente                                |
-| PUT /clientes/{id}                          | Atualiza um cliente existente pelo UUID             |
-| DELETE /clientes/{id}                         | Exclui um cliente pelo UUID                         |
+ Comandos a serem executados no Postman | Função                                                       | Obrigatório passar a query    |                                          
+:---------------------------------------|--------------------------------------------------------------|-------------------------------|
+| GET /clientes                          | Lista todos os clientes                                      |
+| GET /clientes/nome                     | Retorna detalhes de um cliente específico pelo Nome          | ?nome=
+| GET /clientes/representante            | Retorna detalhes de um cliente específico pelo Representante | ?representante=
+| GET /clientes/estado                   | Retorna detalhes de um cliente específico pelo Estado        | ?estado=
+| POST /clientes                         | Cria um novo cliente                                         |
+| PUT /clientes/{id}                     | Atualiza um cliente existente pelo UUID                      |
+| DELETE /clientes/{id}                  | Exclui um cliente pelo UUID                                  |
 
 

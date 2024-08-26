@@ -17,16 +17,26 @@ public class ClientesService {
     @Autowired
     private ClientesRepository clientesRepository;
 
-    // Método para listar todos os clientes
+    // metodo para buscar todos os clientes
     public List<Clientes> listarClientes() {
-        // Lógica para buscar todos os clientes do banco de dados
+        
         return clientesRepository.findAll(); // lógica de retorno;
     }
 
-    public List<Clientes> buscarClientesPorNome(String nome) {
+    // metodo para buscar os clientes por nome
+    public List<Clientes> listaClientesPorNome(String nome) {
         return clientesRepository.findByNomeContaining(nome);
     }
 
+    // metodo para buscar os clientes por representante
+    public List<Clientes> listaClientesPorRepresentante(String representante ) {
+        return clientesRepository.findByRepresentanteContaining(representante);
+    }
+
+    // metodo para buscar os clientes por estado
+    public List<Clientes> listaClientesPorEstado(String estado ) {
+        return clientesRepository.findByEstadoContaining(estado);
+    }
 
     //metodoparasalvarum cliente
     public Clientes salvarCliente(Clientes cliente) {

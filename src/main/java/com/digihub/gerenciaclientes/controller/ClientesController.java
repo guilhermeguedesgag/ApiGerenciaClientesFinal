@@ -28,12 +28,33 @@ public class ClientesController {
         return clientesService.listarClientes();  // Chamando o serviço para buscar os clientes
     }
 
+    // Endpoint para listar cliente por nome
+    @GetMapping("/clientes/nome")
+    public List<Clientes> listarPorNome(@RequestParam("nome") String nome) {
+        return clientesService.listaClientesPorNome(nome);
+    }
+
+    // Endpoint para listar cliente por representante
+    @GetMapping("/clientes/representante")
+    public List<Clientes> listarPorRepresentante(@RequestParam("representante") String representante) {
+        return clientesService.listaClientesPorRepresentante(representante);
+    }
+
+    // Endpoint para listar cliente por estado
+    @GetMapping("/clientes/estado")
+    public List<Clientes> listarPorEstado(@RequestParam("estado") String estado) {
+        return clientesService.listaClientesPorEstado(estado);
+    }
+
+
+
+
     // Endpoint para criar um novo cliente
     @PostMapping("/clientes")
     public Clientes criarCliente(@RequestBody Clientes cliente) {
         return clientesService.salvarCliente(cliente);  // Chamando o serviço para salvar o cliente
     }
-
+    
     //Endpoint para deletar clientes pelo nome
     @DeleteMapping("{id}")
     public void deletarClientePorId(@RequestParam UUID id){
