@@ -19,24 +19,39 @@ public class ClientesService {
 
     // metodo para buscar todos os clientes
     public List<Clientes> listarClientes() {
-        
-        return clientesRepository.findAll(); // lógica de retorno;
+        return clientesRepository.findAll();
     }
 
-    // metodo para buscar os clientes por nome
-    public List<Clientes> listaClientesPorNome(String nome) {
-        return clientesRepository.findByNomeContaining(nome);
+    // metodo para buscar por nome
+    public List <Clientes> listaClientesPorNome(String nome){
+        List <Clientes> clientes = clientesRepository.findByNomeContaining(nome);
+        if (clientes.isEmpty()){
+            throw new NotFoundException("Nome informado: " + nome + " não encontrado no banco de dados.");
+        }
+        return  clientes;
     }
+
 
     // metodo para buscar os clientes por representante
     public List<Clientes> listaClientesPorRepresentante(String representante ) {
-        return clientesRepository.findByRepresentanteContaining(representante);
+        List<Clientes> clientes = clientesRepository.findByRepresentanteContaining(representante);
+        if (clientes.isEmpty()){
+            throw new NotFoundException("Representante informado: "+ representante+  " não encontrado.");
+        }
+        return clientes;
     }
+
+
 
     // metodo para buscar os clientes por estado
     public List<Clientes> listaClientesPorEstado(String estado ) {
-        return clientesRepository.findByEstadoContaining(estado);
+        List <Clientes> clientes = clientesRepository.findByEstadoContaining(estado);
+        if (clientes.isEmpty()){
+            throw new NotFoundException("Estado informado: "+ estado + " não encontrado.");
+        }
+        return clientes;
     }
+
 
     //metodoparasalvarum cliente
     public Clientes salvarCliente(Clientes cliente) {
@@ -48,20 +63,20 @@ public class ClientesService {
     public void deletarClientePorId(UUID id){
 
             clientesRepository.deleteById(id);
-        }
-    
-        
-     @ExceptionHandler   
-    //metodo para atualizar clientes
+    }
+
+
+    //metodo para atualizar clientes através do UUID (id)
+    @ExceptionHandler
     public Clientes atualizarCliente(UUID id, Clientes clienteAtualizado) {
-        // Lógica para encontrar o cliente pelo ID e atualizar suas informações
+
         Optional<Clientes> optionalCliente = clientesRepository.findById(id);
         if (optionalCliente.isPresent()) {
             Clientes clienteExistente = optionalCliente.get();
             clienteExistente.setNome(clienteAtualizado.getNome());
             clienteExistente.setRepresentante(clienteAtualizado.getRepresentante());
             clienteExistente.setEstado(clienteAtualizado.getEstado());
-            return clientesRepository.save(clienteExistente); // Salva as atualizações
+            return clientesRepository.save(clienteExistente);
         } else {
             throw new NotFoundException("Cliente não encontrado com o ID: " + id);
         }
@@ -69,9 +84,4 @@ public class ClientesService {
 
 
 
-    }
-
-
-
-
-
+}

@@ -28,6 +28,7 @@ public class ClientesController {
         return clientesService.listarClientes();  // Chamando o serviço para buscar os clientes
     }
 
+
     // Endpoint para listar cliente por nome
     @GetMapping("/clientes/nome")
     public List<Clientes> listarPorNome(@RequestParam("nome") String nome) {
@@ -45,8 +46,6 @@ public class ClientesController {
     public List<Clientes> listarPorEstado(@RequestParam("estado") String estado) {
         return clientesService.listaClientesPorEstado(estado);
     }
-
-
 
 
     // Endpoint para criar um novo cliente
@@ -75,8 +74,6 @@ public class ClientesController {
             return ResponseEntity.notFound().build();
         }
     }
-
-
 
 
 }
