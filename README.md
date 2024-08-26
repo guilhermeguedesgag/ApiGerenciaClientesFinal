@@ -22,7 +22,6 @@ Lembrando, de sempre inserir a porta, username e password no 'application.proper
 
 ### Estrutura para realizar inserção no Banco de Dados(POST):
 
-### Exemplo de Estrutura de Requisição
 
 ```json
 {
